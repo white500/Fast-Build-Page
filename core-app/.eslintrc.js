@@ -15,6 +15,7 @@ module.exports = {
 		indent: ['error', 'tab'],
 		'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
 		'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-		'no-tabs': 'off'
+		'no-tabs': 'off',
+		'no-trailing-spaces': 'off'
 	}
 }
