@@ -1,12 +1,17 @@
 <!--  -->
 <template>
-    <div class="test">123</div>
+    <div class="test">
+		<h-button></h-button>
+	</div>
 </template>
 
 <script>
-
+import HButton from '@/house/H-Button/index.vue'
 export default {
-	components: {},
+	name: 'test',
+	components: {
+		HButton
+	},
 	data () {
 		// 这里存放数据
 		return {
@@ -39,5 +44,9 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
-
+.test {
+	width: 900px;
+	height: 900px;
+	margin: 100px auto;
+}
 </style>

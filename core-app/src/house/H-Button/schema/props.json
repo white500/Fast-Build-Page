@@ -1,0 +1,10 @@
+{
+	"$struct": {
+		"text": {
+			"describe": "设置按钮文字内容",
+			"type": "string",
+			"default": "按钮"
+		}
+	},
+	"@action": {}
+}

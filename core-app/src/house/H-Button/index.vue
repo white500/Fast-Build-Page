@@ -5,18 +5,27 @@ author: maggot_code
 -->
 <template>
     <div class="h-button">
-        <button>123</button>
+        <a-button
+			:type="componentsSchema.$struct.type.default"
+			:size="componentsSchema.$struct.size.default"
+			:loading="componentsSchema.$struct.loading.default"
+			:disabled="componentsSchema.$struct.disabled.default"
+			:block="componentsSchema.$struct.block.default"
+		>
+			{{propsSchema.$struct.text.default}}
+		</a-button>
     </div>
 </template>
 
 <script>
-
+import schema from './schema'
 export default {
 	components: {},
 	data () {
 		// 这里存放数据
 		return {
-
+			componentsSchema: schema.components,
+			propsSchema: schema.props
 		}
 	},
 	// 监听属性 类似于data概念
@@ -29,7 +38,7 @@ export default {
 	},
 	// 生命周期 - 创建完成（可以访问当前this实例）
 	created () {
-
+		console.log(schema)
 	},
 	// 生命周期 - 挂载完成（可以访问DOM元素）
 	mounted () {
@@ -45,5 +54,5 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
-
+@import './index.scss';
 </style>

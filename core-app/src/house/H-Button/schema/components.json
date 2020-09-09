@@ -1,0 +1,35 @@
+{
+	"$struct": {
+		"type": {
+			"describe": "设置按钮类型，可选值为 primary dashed danger link 或者不设",
+			"type": "string",
+			"default": "default",
+			"attribute": ["default", "primary", "dashed", "danger", "link"]
+		},
+		"size": {
+			"describe": "设置按钮大小，可选值为 small large 或者不设",
+			"type": "string",
+			"default": "default",
+			"attribute": ["default", "small", "large"]
+		},
+		"loading": {
+			"describe": "设置按钮载入状态",
+			"type": "boolean",
+			"default": false,
+			"attribute": [false, true]
+		},
+		"disabled": {
+			"describe": "按钮失效状态",
+			"type": "boolean",
+			"default": false,
+			"attribute": [false, true]
+		},
+		"block": {
+			"describe": "将按钮宽度调整为其父宽度的选项",
+			"type": "boolean",
+			"default": false,
+			"attribute": [false, true]
+		}
+	},
+	"@action": {}
+}
