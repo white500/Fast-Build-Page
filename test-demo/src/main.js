@@ -6,5 +6,4 @@ import 'ant-design-vue/dist/antd.css';
 
 const app = createApp(App);
 app.config.productionTip = false;
-app.use(Antd)
-app.mount('#app')
+app.use(Antd).mount('#app');
