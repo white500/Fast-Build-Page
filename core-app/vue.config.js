@@ -27,7 +27,7 @@ module.exports = {
 	devServer: {
 		// public: '0.0.0.0:8080',
 		https: false,
-		open: true,
+		open: false,
 		proxy: {
 			'/api': {
 				target: process.env.VUE_APP_BASE_URL,

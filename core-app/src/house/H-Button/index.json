@@ -1,0 +1,48 @@
+{
+    "schema": "",
+    "name": "h-button",
+    "title": "",
+    "description": "",
+    "properties":{
+        "props": {
+            "$params":{
+                "text":{
+                    "type":"string",
+                    "options":[],
+                    "default":"按钮"
+                }
+            },
+            "@action":{}
+        },
+        "components": {
+            "$params": {
+                "type": {
+                    "type":"string",
+                    "options":["default", "primary", "dashed", "danger", "link"],
+                    "default":"default"
+                },
+                "shape": {
+                    "type":"string",
+                    "options":["default", "circle", "round"],
+                    "default":"default"
+                },
+                "size": {
+                    "type":"string",
+                    "options":["default", "small", "large"],
+                    "default":"default"
+                },
+                "loading": {
+                    "type":"boolean",
+                    "options":[false, true],
+                    "default":false
+                },
+                "disabled": {
+                    "type":"boolean",
+                    "options":[false, true],
+                    "default":false
+                }
+            },
+            "@action": {}
+        }
+    }
+}

@@ -5,27 +5,21 @@ author: maggot_code
 -->
 <template>
     <div class="h-button">
-        <a-button
-			:type="componentsSchema.$struct.type.default"
-			:size="componentsSchema.$struct.size.default"
-			:loading="componentsSchema.$struct.loading.default"
-			:disabled="componentsSchema.$struct.disabled.default"
-			:block="componentsSchema.$struct.block.default"
-		>
-			{{propsSchema.$struct.text.default}}
-		</a-button>
+        <a-button></a-button>
     </div>
 </template>
 
 <script>
-import schema from './schema'
+import _schema from './index.json'
+import houseMixins from '@/mixins/house.mixins'
 export default {
+	name: _schema.name,
+	mixins: [houseMixins],
 	components: {},
 	data () {
 		// 这里存放数据
 		return {
-			componentsSchema: schema.components,
-			propsSchema: schema.props
+			schema: _schema
 		}
 	},
 	// 监听属性 类似于data概念
@@ -37,9 +31,7 @@ export default {
 
 	},
 	// 生命周期 - 创建完成（可以访问当前this实例）
-	created () {
-		console.log(schema)
-	},
+	created () {},
 	// 生命周期 - 挂载完成（可以访问DOM元素）
 	mounted () {
 
