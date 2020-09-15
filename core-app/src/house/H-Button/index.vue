@@ -11,6 +11,7 @@ author: maggot_code
 
 <script>
 import _schema from './index.json'
+import * as house from '@/utils/house'
 import houseMixins from '@/mixins/house.mixins'
 export default {
 	name: _schema.name,
@@ -27,15 +28,11 @@ export default {
 	// 监控data中的数据变化
 	watch: {},
 	// 方法集合
-	methods: {
-
-	},
+	methods: {},
 	// 生命周期 - 创建完成（可以访问当前this实例）
 	created () {},
 	// 生命周期 - 挂载完成（可以访问DOM元素）
-	mounted () {
-
-	},
+	mounted () {},
 	beforeCreate () {}, // 生命周期 - 创建之前
 	beforeMount () {}, // 生命周期 - 挂载之前
 	beforeUpdate () {}, // 生命周期 - 更新之前
