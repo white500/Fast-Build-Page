@@ -13,6 +13,7 @@ import Home from '@/views/home'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
+<<<<<<< HEAD
 	mode: 'history',
 	base: process.env.BASE_URL,
 	routes: [
@@ -23,14 +24,19 @@ const router = new VueRouter({
 		},
 		...routes
 	]
+=======
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes
+>>>>>>> eefedaf0f842cbd755f25941a57e84a3aa65a5da
 })
 
 router.beforeEach((to, from, next) => {
-	next()
+    next()
 })
 
 router.afterEach(() => {
-	window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
 })
 
 export default router
