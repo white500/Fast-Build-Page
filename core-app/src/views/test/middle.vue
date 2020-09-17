@@ -1,23 +1,12 @@
 <!--  -->
 <template>
-    <div class="test-index">
-        <test-left></test-left>
-        <test-middle></test-middle>
-        <test-right></test-right>
-    </div>
+    <div class="test-middle">中间</div>
 </template>
 
 <script>
-import TestLeft from "./left";
-import TestMiddle from "./middle";
-import TestRight from "./right";
 export default {
-    name: "test-index",
-    components: {
-        TestLeft,
-        TestMiddle,
-        TestRight,
-    },
+    name: "test-middle",
+    components: {},
     data() {
         // 这里存放数据
         return {};

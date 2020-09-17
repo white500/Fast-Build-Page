@@ -15,6 +15,7 @@ module.exports = {
         indent: ['error', 4],
         semi: 'off',
         quotes: 'off',
+        'comma-dangle': 'off',
         'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'no-tabs': 'off',
