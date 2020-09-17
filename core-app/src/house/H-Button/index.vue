@@ -3,12 +3,6 @@ edition: v1.0.1.alpha
 time: 2020年9月9日22:17:27
 author: maggot_code
 -->
-<template>
-    <div class="h-button">
-        <a-button></a-button>
-    </div>
-</template>
-
 <script>
 import _schema from './index.json'
 import * as house from '@/utils/house'
@@ -17,18 +11,52 @@ export default {
 	name: _schema.name,
 	mixins: [houseMixins],
 	components: {},
+	render(createElement) {
+		return createElement(...this.setElement())
+	},
 	data () {
 		// 这里存放数据
 		return {
-			schema: _schema
+			h_schema: _schema,
+			h_props: _schema.properties.props,
+			h_action: _schema.properties.action
 		}
 	},
 	// 监听属性 类似于data概念
 	computed: {},
 	// 监控data中的数据变化
-	watch: {},
+	watch: {
+		h_props: {
+			handler(newVal) {
+				console.log(newVal);
+			},
+			deep: true
+		}
+	},
 	// 方法集合
-	methods: {},
+	methods: {
+		setElement() {
+			return [
+				'a-button',
+				{ 
+					...this.filterProps(this.h_props)
+				},
+				this.h_props.text.params
+			]
+		},
+		filterProps(schema) {
+			const params = {}
+			for (const key in schema) {
+				if (schema.hasOwnProperty(key)) {
+					const sc = schema[key];
+					if (sc.params !== 'default' && this.langInterFace(sc.type)(sc.params)) {
+						params[key] = sc.params
+					}
+				}
+			}
+			return { props: params };
+		}
+	},
 	// 生命周期 - 创建完成（可以访问当前this实例）
 	created () {},
 	// 生命周期 - 挂载完成（可以访问DOM元素）

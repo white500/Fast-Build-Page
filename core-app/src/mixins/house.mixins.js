@@ -5,9 +5,9 @@ export default {
 	data() {
 		// 这里存放数据
 		return {
-			schema: {},
-			propsParams: {},
-			componentsParams: {}
+			h_schema: {},
+			h_props: {},
+			h_action: {}
 		}
 	},
 	// 监听属性 类似于data概念

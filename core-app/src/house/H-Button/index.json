@@ -1,48 +1,63 @@
 {
-    "schema": "",
-    "name": "h-button",
+    "$schema": "",
+    "type":"object",
     "title": "",
     "description": "",
+    "name": "h-button",
     "properties":{
-        "props": {
-            "$params":{
-                "text":{
-                    "type":"string",
-                    "options":[],
-                    "default":"按钮"
-                }
+        "props":{
+            "text":{
+                "type":"string",
+                "range":[],
+                "default":"按钮",
+                "params":"按钮"
             },
-            "$action":{}
+            "size":{
+                "type":"string",
+                "range":["default", "small", "large"],
+                "default":"default",
+                "params":"default"
+            },
+            "type":{
+                "type":"string",
+                "range":["default", "primary", "dashed", "danger", "link"],
+                "default":"default",
+                "params":"default"
+            },
+            "icon":{
+                "type":"string",
+                "range":[],
+                "default":"",
+                "params":""
+            },
+            "shape":{
+                "type":"string",
+                "range":["default", "circle", "circle-outline", "round"],
+                "default":"default",
+                "params":"default"
+            },
+            "disabled":{
+                "type":"boolean",
+                "range":[false, true],
+                "default":false,
+                "params":false
+            },
+            "ghost":{
+                "type":"boolean",
+                "range":[false, true],
+                "default":false,
+                "params":false
+            },
+            "loading":{
+                "type":"boolean",
+                "range":[false, true],
+                "default":false,
+                "params":false
+            }
         },
-        "components": {
-            "$params": {
-                "type": {
-                    "type":"string",
-                    "options":["default", "primary", "dashed", "danger", "link"],
-                    "default":"default"
-                },
-                "shape": {
-                    "type":"string",
-                    "options":["default", "circle", "round"],
-                    "default":"default"
-                },
-                "size": {
-                    "type":"string",
-                    "options":["default", "small", "large"],
-                    "default":"default"
-                },
-                "loading": {
-                    "type":"boolean",
-                    "options":[false, true],
-                    "default":false
-                },
-                "disabled": {
-                    "type":"boolean",
-                    "options":[false, true],
-                    "default":false
-                }
-            },
-            "$action":{}
+        "action":{
+            "click":null
         }
-    }
+    },
+    "required": ["id", "name", "price"]
 }

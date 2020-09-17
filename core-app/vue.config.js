@@ -7,14 +7,8 @@ module.exports = {
 	chainWebpack: config => {
 		config.resolve.alias
 			.set('@', resolves('src'))
-			.set('_c', resolves('src/components'))
-			.set('_api', resolves('src/api'))
-		// config
-		//     .plugin('html')
-		//     .tap(args => {
-		//         args[0].title = '新凤河智慧水务平台'
-		//         return args
-		//     })
+			.set('@c', resolves('src/components'))
+			.set('@api', resolves('src/api'))
 	},
 	configureWebpack: config => {
 		// 调试JS
@@ -26,6 +20,7 @@ module.exports = {
 	},
 	devServer: {
 		// public: '0.0.0.0:8080',
+		port: 8080,
 		https: false,
 		open: false,
 		proxy: {
