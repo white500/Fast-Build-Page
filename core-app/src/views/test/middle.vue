@@ -1,10 +1,6 @@
 <!--  -->
 <template>
-    <div class="test-middle">
-        {{this.puid}}
-        <br />
-        {{this.cid}}
-    </div>
+    <div class="test-middle">{{pSchema}}</div>
 </template>
 
 <script>
@@ -19,8 +15,7 @@ export default {
     // 监听属性 类似于data概念
     computed: {
         ...mapGetters("msgCenter", {
-            puid: "getPuid",
-            cid: "getCid",
+            pSchema: "getPSchema",
         }),
     },
     // 监控data中的数据变化

@@ -1,12 +1,14 @@
+import houseSchema from '@/views/test/house';
 export default {
     namespaced: true,
     state: {
         puid: '',
-        cid: ''
+        cid: '',
     },
     getters: {
         getPuid: state => state.puid,
-        getCid: state => state.cid
+        getCid: state => state.cid,
+        getPSchema: state => houseSchema[state.puid],
     },
     mutations: {
         setPuid(state, puid) {
