@@ -1,8 +1,11 @@
 <!--  -->
 <template>
     <div class="test-index">
+        <!-- 仓库视图 -->
         <test-left></test-left>
+        <!-- 布局视图 -->
         <test-middle></test-middle>
+        <!-- 属性/行为视图 -->
         <test-right></test-right>
     </div>
 </template>
@@ -42,4 +45,20 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
+.test-index {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    .test-left,
+    .test-right {
+        flex: 0.3;
+        background-color: #eee;
+    }
+    .test-middle {
+        flex: 1;
+        background-color: #666;
+    }
+}
 </style>

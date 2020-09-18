@@ -1,9 +1,14 @@
 <!--  -->
 <template>
-    <div class="test-middle">中间</div>
+    <div class="test-middle">
+        {{this.puid}}
+        <br />
+        {{this.cid}}
+    </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
     name: "test-middle",
     components: {},
@@ -12,7 +17,12 @@ export default {
         return {};
     },
     // 监听属性 类似于data概念
-    computed: {},
+    computed: {
+        ...mapGetters("msgCenter", {
+            puid: "getPuid",
+            cid: "getCid",
+        }),
+    },
     // 监控data中的数据变化
     watch: {},
     // 方法集合

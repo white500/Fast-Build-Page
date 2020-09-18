@@ -13,22 +13,16 @@ import Home from '@/views/home'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
-<<<<<<< HEAD
-	mode: 'history',
-	base: process.env.BASE_URL,
-	routes: [
-		{
-			path: '/',
-			name: 'home',
-			component: Home
-		},
-		...routes
-	]
-=======
     mode: 'history',
     base: process.env.BASE_URL,
-    routes
->>>>>>> eefedaf0f842cbd755f25941a57e84a3aa65a5da
+    routes: [
+        {
+            path: '/',
+            name: 'home',
+            component: Home
+        },
+        ...routes
+    ]
 })
 
 router.beforeEach((to, from, next) => {

@@ -1,0 +1,55 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "type": "object",
+    "title": "h-button",
+    "description": "按钮用于开始一个即时操作。",
+    "props": {
+        "text": {
+            "type": "string",
+            "options": [],
+            "default": "按钮"
+        },
+        "type": {
+            "type": "string",
+            "options": ["primary", "dashed", "danger", "link", "default"],
+            "default": "default"
+        },
+        "shape": {
+            "type": "string",
+            "options": ["circle", "round", "default"],
+            "default": "default"
+        },
+        "size": {
+            "type": "string",
+            "options": ["small", "large", "default"],
+            "default": "default"
+        },
+        "loading": {
+            "type": "boolean",
+            "options": [true, false],
+            "default": false
+        },
+        "disabled": {
+            "type": "boolean",
+            "options": [true, false],
+            "default": false
+        },
+        "ghost": {
+            "type": "boolean",
+            "options": [true, false],
+            "default": false
+        },
+        "icon": {
+            "type": "string",
+            "options": [],
+            "default": "default"
+        },
+        "block": {
+            "type": "boolean",
+            "options": [true, false],
+            "default": false
+        }
+    },
+    "action": {},
+    "required": ["text", "loading", "disabled"]
+}

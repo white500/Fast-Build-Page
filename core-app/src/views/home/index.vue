@@ -5,30 +5,24 @@
 -->
 <template>
     <div class="container">
-        <div class="left-panel">
-            左侧菜单
-        </div>
-        <div class="middle-panel">
-            中间显示表单
-        </div>
-        <div class="right-panel">
-            右侧菜单
-        </div>
+        <div class="left-panel">左侧菜单</div>
+        <div class="middle-panel">中间显示表单</div>
+        <div class="right-panel">右侧菜单</div>
     </div>
 </template>
 
 <script>
 // import RightPanel from './component/RightPanel'
 export default {
-	components: {
-		// RightPanel
-	},
-	data() {
-		return {
-			title: ''
-		}
-	}
-}
+    components: {
+        // RightPanel
+    },
+    data() {
+        return {
+            title: "",
+        };
+    },
+};
 </script>
 
 <style lang="scss" scoped>
