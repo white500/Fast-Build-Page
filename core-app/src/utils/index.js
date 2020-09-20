@@ -1,4 +1,4 @@
-import { findIndex } from 'lodash'
+import { findIndex, isBoolean, isString } from 'lodash'
 const crypto = require('crypto');
 // guid生成器
 export const createGuid = () => ([1e7] + 1e3 + 4e3 + 8e3 + 1e11).replace(/[018]/g, c => (c ^ (crypto.randomBytes(1)[0] & (15 >> (c / 4)))).toString(16))
@@ -50,4 +50,22 @@ export const deleteViewLayout = cid => {
     viewLayout.splice(indexOf, 1)
     cacheSave('viewLayout', viewLayout);
     return viewLayout;
+}
+
+const checkLang = {
+    string: isString,
+    boolean: isBoolean
+}
+// 过滤参数
+export const filterOptions = options => {
+    const params = {}
+    for (const key in options) {
+        if (options.hasOwnProperty(key)) {
+            const el = options[key];
+            if (checkLang[el.type](el.default) && el.default !== 'default') {
+                params[key] = el.default;
+            }
+        }
+    }
+    return params;
 }

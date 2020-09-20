@@ -7,46 +7,55 @@
         "text": {
             "type": "string",
             "options": [],
+            "render": "a-input",
             "default": "按钮"
         },
         "type": {
             "type": "string",
             "options": ["primary", "dashed", "danger", "link", "default"],
+            "render": "a-select",
             "default": "default"
         },
         "shape": {
             "type": "string",
             "options": ["circle", "round", "default"],
+            "render": "a-select",
             "default": "default"
         },
         "size": {
             "type": "string",
             "options": ["small", "large", "default"],
+            "render": "a-select",
             "default": "default"
         },
         "loading": {
             "type": "boolean",
             "options": [true, false],
+            "render": "a-switch",
             "default": false
         },
         "disabled": {
             "type": "boolean",
             "options": [true, false],
+            "render": "a-switch",
             "default": false
         },
         "ghost": {
             "type": "boolean",
             "options": [true, false],
+            "render": "a-switch",
             "default": false
         },
         "icon": {
             "type": "string",
             "options": [],
+            "render": "a-input",
             "default": "default"
         },
         "block": {
             "type": "boolean",
             "options": [true, false],
+            "render": "a-switch",
             "default": false
         }
     },

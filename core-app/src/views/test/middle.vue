@@ -1,27 +1,27 @@
 <!--  -->
 <template>
     <div class="test-middle">
-        <div v-for="item in viewLayout" :key="item.cid">
-            {{item.cid}}
-            <a-button type="danger" @click="deleteView(item.cid)">删除</a-button>
-        </div>
+        <h1>布局视图</h1>
+        <component
+            v-for="item in viewLayout"
+            :key="item.cid"
+            :is="item.label"
+            :options="item.cSchema"
+        ></component>
     </div>
 </template>
 
 <script>
-import {
-    getViewLayout,
-    updateViewLayout,
-    deleteViewLayout,
-} from "./utils/index";
+import { getViewLayout } from "@u";
 import { mapGetters } from "vuex";
+import { ControllersComponents } from "./components/index";
 export default {
     name: "test-middle",
-    components: {},
+    components: { ...ControllersComponents },
     data() {
         // 这里存放数据
         return {
-            viewLayout: {},
+            viewLayout: [],
         };
     },
     // 监听属性 类似于data概念
@@ -30,30 +30,22 @@ export default {
             puid: "getPuid",
             cid: "getCid",
             pSchema: "getPSchema",
+            cSchema: "getCSchema",
         }),
     },
     // 监控data中的数据变化
     watch: {
         cid: {
-            handler(newVal) {
-                const blood = {
-                    puid: this.puid,
-                    cid: newVal,
-                    params: this.pSchema,
-                };
-                this.viewLayout = this._.cloneDeep(updateViewLayout(blood));
+            handler() {
+                this.viewLayout = getViewLayout();
             },
         },
     },
     // 方法集合
-    methods: {
-        deleteView(cid) {
-            this.viewLayout = this._.cloneDeep(deleteViewLayout(cid));
-        },
-    },
+    methods: {},
     // 生命周期 - 创建完成（可以访问当前this实例）
     created() {
-        this.viewLayout = this._.cloneDeep(getViewLayout());
+        this.viewLayout = getViewLayout();
     },
     // 生命周期 - 挂载完成（可以访问DOM元素）
     mounted() {},

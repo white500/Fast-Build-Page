@@ -1,6 +1,7 @@
 <!--  -->
 <template>
     <div class="test-left">
+        <h1>组件仓库</h1>
         <a-button
             v-for="item in house"
             :key="item.PUID"
@@ -11,9 +12,10 @@
 </template>
 
 <script>
-import { createGuid } from "./utils/index";
+import { createGuid, filterOptions, updateViewLayout } from "@u";
+import house from "@/views/test/house";
 import { mapActions } from "vuex";
-import Warehouse from "./json/house";
+import Warehouse from "./json";
 export default {
     name: "test-left",
     components: {},
@@ -29,13 +31,29 @@ export default {
     watch: {},
     // 方法集合
     methods: {
-        ...mapActions("msgCenter", ["_setPuid", "_setCid"]),
+        ...mapActions("msgCenter", [
+            "_setPuid",
+            "_setCid",
+            "_setPSchema",
+            "_setCSchema",
+        ]),
         getWarehouse(item) {
-            // 获取PUID,可以知道现在需要渲染什么组件了
             const puid = item.PUID;
             const cid = createGuid();
-            this._setPuid(puid);
-            this._setCid(cid);
+            const pSchema = house[puid];
+            const cSchema = filterOptions(pSchema.props);
+            const controlParms = {
+                label: pSchema.title,
+                puid: puid,
+                cid: cid,
+                pSchema: pSchema,
+                cSchema: cSchema,
+            };
+            this._setPuid(controlParms.puid);
+            this._setCid(controlParms.cid);
+            this._setPSchema(controlParms.pSchema);
+            this._setCSchema(controlParms.cSchema);
+            updateViewLayout(controlParms);
         },
     },
     // 生命周期 - 创建完成（可以访问当前this实例）

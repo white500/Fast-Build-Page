@@ -23,6 +23,7 @@ module.exports = {
         'no-unused-vars': 'off',
         'space-before-function-paren': 'off',
         'no-useless-constructor': 'off',
-        'no-prototype-builtins': 'off'
+        'no-prototype-builtins': 'off',
+        'spaced-comment': 'off'
     }
 }

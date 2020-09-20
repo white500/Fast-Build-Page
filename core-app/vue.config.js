@@ -7,6 +7,7 @@ module.exports = {
     chainWebpack: config => {
         config.resolve.alias
             .set('@', resolves('src'))
+            .set('@u', resolves('src/utils'))
             .set('@c', resolves('src/components'))
             .set('@api', resolves('src/api'))
     },

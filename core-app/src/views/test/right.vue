@@ -1,9 +1,12 @@
 <!--  -->
 <template>
-    <div class="test-right">右边</div>
+    <div class="test-right">
+        <h1>属性配置</h1>
+    </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
     name: "test-right",
     components: {},
@@ -12,9 +15,19 @@ export default {
         return {};
     },
     // 监听属性 类似于data概念
-    computed: {},
+    computed: {
+        ...mapGetters("msgCenter", {
+            pSchema: "getPSchema",
+        }),
+    },
     // 监控data中的数据变化
-    watch: {},
+    watch: {
+        pSchema: {
+            handler(newVal) {
+                console.log(newVal);
+            },
+        },
+    },
     // 方法集合
     methods: {},
     // 生命周期 - 创建完成（可以访问当前this实例）
@@ -30,5 +43,4 @@ export default {
     activated() {}, // 如果页面有keep-alive缓存功能，这个函数会触发
 };
 </script>
-<style lang='scss' scoped>
-</style>
+<style lang='scss' scoped></style>

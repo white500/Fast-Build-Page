@@ -11,11 +11,11 @@
 
 <script>
 export default {
-	data() {
-		return {
-			title: '我是右边的'
-		}
-	}
+    data() {
+        return {
+            title: '我是右边的'
+        }
+    }
 }
 </script>
 
