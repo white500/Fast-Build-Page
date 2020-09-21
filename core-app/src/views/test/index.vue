@@ -11,10 +11,11 @@
 </template>
 
 <script>
-import { cacheDelete } from "@u";
+import { getViewLayout } from "@u";
 import TestLeft from "./left";
 import TestMiddle from "./middle";
 import TestRight from "./right";
+import { mapActions } from "vuex";
 export default {
     name: "test-index",
     components: {
@@ -31,10 +32,13 @@ export default {
     //监控data中的数据变化
     watch: {},
     //方法集合
-    methods: {},
+    methods: {
+        ...mapActions("msgCenter", ["_setAtViewLayout"]),
+    },
     //生命周期 - 创建完成（可以访问当前this实例）
     created() {
-        cacheDelete();
+        const viewLayout = getViewLayout();
+        this._setAtViewLayout({ ...this._.last(viewLayout) });
     },
     //生命周期 - 挂载完成（可以访问DOM元素）
     mounted() {},

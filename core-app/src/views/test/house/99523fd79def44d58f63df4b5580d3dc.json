@@ -1,61 +1,79 @@
 {
     "$schema": "http://json-schema.org/schema",
     "type": "object",
-    "title": "h-button",
+    "label": "h-button",
     "description": "按钮用于开始一个即时操作。",
     "props": {
         "text": {
+            "label": "文字内容",
+            "description": "设置按钮文字内容",
             "type": "string",
             "options": [],
-            "render": "a-input",
+            "render": "input",
             "default": "按钮"
         },
         "type": {
+            "label": "类型选择",
+            "description": "设置按钮类型",
             "type": "string",
             "options": ["primary", "dashed", "danger", "link", "default"],
-            "render": "a-select",
+            "render": "select",
             "default": "default"
         },
         "shape": {
+            "label": "形状选择",
+            "description": "设置按钮形状",
             "type": "string",
             "options": ["circle", "round", "default"],
-            "render": "a-select",
+            "render": "select",
             "default": "default"
         },
         "size": {
+            "label": "尺寸选择",
+            "description": "设置按钮大小",
             "type": "string",
             "options": ["small", "large", "default"],
-            "render": "a-select",
+            "render": "select",
             "default": "default"
         },
         "loading": {
+            "label": "是否载入",
+            "description": "设置按钮载入状态",
             "type": "boolean",
             "options": [true, false],
-            "render": "a-switch",
+            "render": "switch",
             "default": false
         },
         "disabled": {
+            "label": "是否禁用",
+            "description": "按钮失效状态",
             "type": "boolean",
             "options": [true, false],
-            "render": "a-switch",
+            "render": "switch",
             "default": false
         },
         "ghost": {
+            "label": "背景透明",
+            "description": "幽灵属性，使按钮背景透明",
             "type": "boolean",
             "options": [true, false],
-            "render": "a-switch",
+            "render": "switch",
             "default": false
         },
         "icon": {
+            "label": "按钮图标",
+            "description": "设置按钮的图标类型",
             "type": "string",
             "options": [],
-            "render": "a-input",
-            "default": "default"
+            "render": "input",
+            "default": ""
         },
         "block": {
+            "label": "调整为父级宽度",
+            "description": "将按钮宽度调整为其父宽度",
             "type": "boolean",
             "options": [true, false],
-            "render": "a-switch",
+            "render": "switch",
             "default": false
         }
     },

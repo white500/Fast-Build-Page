@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { createGuid, filterOptions, updateViewLayout } from "@u";
+import { createGuid, extractOptions, addViewLayout } from "@u";
 import house from "@/views/test/house";
 import { mapActions } from "vuex";
 import Warehouse from "./json";
@@ -31,29 +31,19 @@ export default {
     watch: {},
     // 方法集合
     methods: {
-        ...mapActions("msgCenter", [
-            "_setPuid",
-            "_setCid",
-            "_setPSchema",
-            "_setCSchema",
-        ]),
+        ...mapActions("msgCenter", ["_setAtViewLayout"]),
         getWarehouse(item) {
             const puid = item.PUID;
-            const cid = createGuid();
             const pSchema = house[puid];
-            const cSchema = filterOptions(pSchema.props);
-            const controlParms = {
-                label: pSchema.title,
-                puid: puid,
-                cid: cid,
-                pSchema: pSchema,
-                cSchema: cSchema,
+            const info = {
+                label: house[puid].label,
+                puid: item.PUID,
+                cid: createGuid(),
+                pSchema: house[puid],
+                cSchema: extractOptions(pSchema.props),
             };
-            this._setPuid(controlParms.puid);
-            this._setCid(controlParms.cid);
-            this._setPSchema(controlParms.pSchema);
-            this._setCSchema(controlParms.cSchema);
-            updateViewLayout(controlParms);
+            this._setAtViewLayout({ ...info });
+            addViewLayout({ ...info });
         },
     },
     // 生命周期 - 创建完成（可以访问当前this实例）

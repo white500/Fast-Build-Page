@@ -35,10 +35,35 @@ export const getViewLayout = () => {
     return viewLayout;
 }
 
-// 更新视图队列
-export const updateViewLayout = newBlood => {
+// 获取指定视图队列
+export const getOlineViewLayout = cid => {
+    const viewLayout = cacheGet('viewLayout') ?? [];
+    const indexOf = findIndex(viewLayout, item => item.cid === cid);
+    return viewLayout[indexOf]
+}
+
+// 新增视图队列
+export const addViewLayout = newBlood => {
     const viewLayout = cacheGet('viewLayout') ?? [];
     viewLayout.push(newBlood)
+    cacheSave('viewLayout', viewLayout);
+    return viewLayout;
+}
+
+// 更新视图队列
+export const updateViewLayout = (cid, key, val) => {
+    const viewLayout = cacheGet('viewLayout') ?? [];
+    const indexOf = findIndex(viewLayout, item => item.cid === cid);
+    viewLayout[indexOf].cSchema[key] = val;
+    cacheSave('viewLayout', viewLayout);
+    return viewLayout;
+}
+
+// 统一更新视图队列
+export const updateAllViewLayout = (cid, newBool) => {
+    const viewLayout = cacheGet('viewLayout') ?? [];
+    const indexOf = findIndex(viewLayout, item => item.cid === cid);
+    viewLayout[indexOf].cSchema = newBool
     cacheSave('viewLayout', viewLayout);
     return viewLayout;
 }
@@ -56,15 +81,33 @@ const checkLang = {
     string: isString,
     boolean: isBoolean
 }
+
+// 验证参数
+export const checkOptions = options => {
+    console.log(options);
+}
+
 // 过滤参数
 export const filterOptions = options => {
     const params = {}
     for (const key in options) {
         if (options.hasOwnProperty(key)) {
             const el = options[key];
-            if (checkLang[el.type](el.default) && el.default !== 'default') {
-                params[key] = el.default;
+            if (el !== "default" && el !== "") {
+                params[key] = el;
             }
+        }
+    }
+    return params;
+}
+
+// 提取参数
+export const extractOptions = options => {
+    const params = {}
+    for (const key in options) {
+        if (options.hasOwnProperty(key)) {
+            const el = options[key];
+            params[key] = el.default;
         }
     }
     return params;

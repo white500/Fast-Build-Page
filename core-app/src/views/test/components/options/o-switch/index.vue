@@ -1,16 +1,18 @@
+<!--  -->
+<template>
+    <div class="o-switch">
+        {{options.op.label}}
+        <br />
+        {{options.op.description}}
+        <a-switch v-model="checked" @change="onChange" />
+    </div>
+</template>
+
 <script>
+import { mapActions } from "vuex";
 export default {
-    name: "h-button",
+    name: "o-switch",
     components: {},
-    render(h) {
-        return h(
-            "a-button",
-            {
-                props: this.options,
-            },
-            this.options.text
-        );
-    },
     props: {
         options: {
             type: Object,
@@ -19,14 +21,30 @@ export default {
     },
     data() {
         //这里存放数据
-        return {};
+        return {
+            checked: this.options.val,
+        };
     },
     //监听属性 类似于data概念
     computed: {},
     //监控data中的数据变化
-    watch: {},
+    watch: {
+        options: {
+            handler(newVal) {
+                this.checked = newVal.val;
+            },
+        },
+    },
     //方法集合
-    methods: {},
+    methods: {
+        ...mapActions("msgCenter", ["_updateAtViewLayout"]),
+        onChange(isFlg) {
+            this._updateAtViewLayout({
+                key: this.options.key,
+                val: this.checked,
+            });
+        },
+    },
     //生命周期 - 创建完成（可以访问当前this实例）
     created() {},
     //生命周期 - 挂载完成（可以访问DOM元素）

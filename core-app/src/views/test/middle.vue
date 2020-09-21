@@ -2,19 +2,23 @@
 <template>
     <div class="test-middle">
         <h1>布局视图</h1>
-        <component
-            v-for="item in viewLayout"
-            :key="item.cid"
-            :is="item.label"
-            :options="item.cSchema"
-        ></component>
+        <ul>
+            <li
+                v-for="item in viewLayout"
+                :key="item.cid"
+                :class="item.cid === cid ? 'ac' : ''"
+                @click="acViewLayout(item)"
+            >
+                <component :is="item.label" :options="item"></component>
+            </li>
+        </ul>
     </div>
 </template>
 
 <script>
-import { getViewLayout } from "@u";
-import { mapGetters } from "vuex";
-import { ControllersComponents } from "./components/index";
+import { getViewLayout, getOlineViewLayout, updateAllViewLayout } from "@u";
+import { mapGetters, mapActions } from "vuex";
+import { ControllersComponents } from "./components/viewLayout/index";
 export default {
     name: "test-middle",
     components: { ...ControllersComponents },
@@ -27,22 +31,29 @@ export default {
     // 监听属性 类似于data概念
     computed: {
         ...mapGetters("msgCenter", {
+            atViewLayout: "getAtViewLayout",
             puid: "getPuid",
             cid: "getCid",
-            pSchema: "getPSchema",
-            cSchema: "getCSchema",
         }),
     },
     // 监控data中的数据变化
     watch: {
-        cid: {
-            handler() {
-                this.viewLayout = getViewLayout();
+        "atViewLayout.cSchema": {
+            handler(newVal) {
+                this.viewLayout = updateAllViewLayout(this.cid, newVal);
             },
+            deep: true,
         },
     },
     // 方法集合
-    methods: {},
+    methods: {
+        ...mapActions("msgCenter", ["_setAtViewLayout"]),
+        acViewLayout(active) {
+            const onLineViewLayout = getOlineViewLayout(active.cid);
+            console.log(onLineViewLayout);
+            this._setAtViewLayout(onLineViewLayout);
+        },
+    },
     // 生命周期 - 创建完成（可以访问当前this实例）
     created() {
         this.viewLayout = getViewLayout();
@@ -59,4 +70,20 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
+.test-middle {
+    & > ul {
+        width: 90%;
+        li {
+            width: 100%;
+            padding: 10px 0;
+            background-color: #fff;
+        }
+        li + li {
+            margin-top: 20px;
+        }
+        li.ac {
+            background-color: red;
+        }
+    }
+}
 </style>
