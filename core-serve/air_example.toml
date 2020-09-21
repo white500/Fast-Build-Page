@@ -1,7 +1,9 @@
 # Config file for [Air](https://github.com/cosmtrek/air) in TOML format
+# [Air]的配置文件(https://github.com/cosmtrek/air)TOML格式
 
-# Working directory
+# Working directory 工作目录
 # . or absolute path, please note that the directories following must be under root.
+# . 或者绝对路径，请注意下面的目录必须在根目录下。
 root = "."
 tmp_dir = "tmp"
 
@@ -13,8 +15,10 @@ bin = "tmp/main"
 # Customize binary.
 full_bin = "APP_ENV=dev APP_USER=air ./tmp/main"
 # Watch these filename extensions.
+# 注意这些文件的扩展名
 include_ext = ["go", "tpl", "tmpl", "html"]
 # Ignore these filename extensions or directories.
+# 忽略这些文件扩展名或者目录。
 exclude_dir = ["assets", "tmp", "vendor", "frontend/node_modules"]
 # Watch these directories if you specified.
 include_dir = []
@@ -23,8 +27,10 @@ exclude_file = []
 # This log file places in your tmp_dir.
 log = "air.log"
 # It's not necessary to trigger build each time file changes if it's too frequent.
+# 如果文件更改太频繁，则不必每次都触发生成。
 delay = 1000 # ms
 # Stop running old binary when build errors occur.
+# 生成错误时停止运行旧的二进制文件。
 stop_on_error = true
 # Send Interrupt signal before killing process (windows does not support this feature)
 send_interrupt = false
@@ -33,10 +39,12 @@ kill_delay = 500 # ms
 
 [log]
 # Show log time
+# 显示日志时间
 time = false
 
 [color]
 # Customize each part's color. If no color found, use the raw app log.
+# 自定义输出颜色，如果没有找到颜色，使用原始日志
 main = "magenta"
 watcher = "cyan"
 build = "yellow"
@@ -44,4 +52,5 @@ runner = "green"
 
 [misc]
 # Delete tmp directory on exit
+# 退出时删除tmp目录
 clean_on_exit = true
