@@ -4,9 +4,11 @@
 *.test
 *.prof
 *.out
+*.sum
 
 vendor/
 tmp/
+air.toml
 
 # IDE specific files
 .vscode
